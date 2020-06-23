@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.Color;
 
 public class car {
 
@@ -9,12 +10,12 @@ public class car {
     // Color (from awt library)
     // boolean
 
-    int averageMilesPerGallon;
+    double averageMilesPerGallon;
     String licensePlate;
     Color paintColor;
     boolean areTaillightsWorking;
 
-    public Car(int inputAverageMPG, 
+    public car(double inputAverageMPG, 
     String inputLicensePlate, 
     Color inputPaintColor, 
     boolean inputAreTaillightsWorking) {
@@ -22,5 +23,9 @@ public class car {
         this.licensePlate = inputLicensePlate;
         this.paintColor = inputPaintColor;
         this.areTaillightsWorking = inputAreTaillightsWorking;
+    }
+
+    public void changePaintColor(Color newPaintColor) {
+        this.paintColor = newPaintColor;
     }
 }
