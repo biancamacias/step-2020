@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class javaPractice {
+public class intro {
 
     public static void main(String[] args) {
         System.out.println("Hello World");
@@ -16,11 +16,9 @@ public class javaPractice {
         Color.BLACK, 
         false);
 
-        System.out.println("My Car's License Plate: " + myCar.licensePlate);
-        System.out.println("Sally's License Plate: " + sallyCar.licensePlate);
+        double myCarSpeed = 50;
+        myCarSpeed = myCar.speedingUp(myCarSpeed);
 
-        System.out.println(myCar.paintColor.toString());
-        myCar.changePaintColor(Color.RED);
-        System.out.println(myCar.paintColor.toString());
+        System.out.println(myCarSpeed);
     }
 }
