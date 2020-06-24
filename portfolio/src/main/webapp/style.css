@@ -1,18 +1,28 @@
 body {
     margin: 0px;
-    background-color: 
+    background-color: white;
 }
 
 #title {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
+    display: flexbox;
+    margin-left: auto;
+    margin-right: auto;
+    width: 650px;
 }
 
-#left-column {
+#about-sidebar {
   margin-top: 20px;
+  flex-direction: column;
 }
 
-#right-column {
-    
+.box {
+
+}
+
+#content-sidebar {
+    flex-direction: column;
+}
+
+.blog-post {
+
 }
