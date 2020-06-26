@@ -16,7 +16,6 @@
  * Adds a random quote to the page.
  */
 
-
 function promptRandomQuote() {
   const quotes =
       ['The secret of getting ahead is getting started.', 'What you do today can improve all your tomorrows',
