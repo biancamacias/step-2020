@@ -54,7 +54,7 @@ about-content {
     padding: 20px;
 }
 
-#links.box {
+#buttons.box {
     padding: 10px;
     display: flex;
     flex-direction: column;
