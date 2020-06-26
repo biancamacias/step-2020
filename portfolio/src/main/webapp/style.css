@@ -48,7 +48,7 @@ p {
 }
 
 /* paragraph with id="about-content" */
-about-content {
+#about-content {
     margin: 10px 10px;
     background-color: #7fb9c7;
     padding: 20px;
