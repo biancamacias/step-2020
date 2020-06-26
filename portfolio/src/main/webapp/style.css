@@ -1,23 +1,23 @@
 body {
-    margin: 0px;
     background-color: white;
+    margin: 0px;
 }
 
 #title {
+    background-color: #9fa2b2;
     font-weight: bold;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
-    background-color: #9fa2b2;
-    height: 100%;
     padding: 10px;
     text-align: center;
+    width: 100%;
 }
 
 h1 {
     font-family: Helvetica;
-    font-weight: bold;
     font-style: oblique;
+    font-weight: bold;
 }
 
 p {
@@ -29,46 +29,51 @@ p {
 }
 
 #about.sidebar {
+    background-color: #3c7a89;
     flex: 25%;
+    flex-direction: column;
+    left: 0;
+    padding: 20px;
+    text-align: center;
+    top: 0;
     width: 300px;
     z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #3c7a89;
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
 }
 
-/* paragraph with id="about-title" */
 #about-title {
-    font-weight: bold;
     font-size: 30px;
+    font-weight: bold;
     padding: 10px;
 }
 
-/* paragraph with id="about-content" */
+
 #about-content {
     margin: 10px 10px;
+
+about-content {
     background-color: #7fb9c7;
+    margin: 10px 10px;
     padding: 20px;
 }
 
 #buttons.box {
     padding: 10px;
+
+#links.box {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 10px;
 }
 
 a:link, a:visited {
-    text-decoration: none;
-    color: aliceblue;
     background-color: #16262e;
-    padding: 14px 25px;
-    text-align: center;
+    color: aliceblue;
     display: inline-block;
     margin: 10px;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
 }
 
 a:hover {
@@ -87,6 +92,6 @@ a:hover {
 }
 
 .blog-post {
-    flex-wrap: wrap;
     font-family: Helvetica;
+    flex-wrap: wrap;
 }
