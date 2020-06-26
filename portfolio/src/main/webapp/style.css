@@ -46,18 +46,29 @@ p {
     padding: 10px;
 }
 
-
 #about-content {
     margin: 10px 10px;
+}
 
-about-content {
+#about-content {
     background-color: #7fb9c7;
     margin: 10px 10px;
     padding: 20px;
 }
 
+#quote-container {
+    background-color: #16262e;
+    color: aliceblue;
+    display: inline-block;
+    margin: 10px;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+}
+
 #buttons.box {
     padding: 10px;
+}
 
 #links.box {
     display: flex;
