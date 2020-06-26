@@ -16,7 +16,8 @@
  * Adds a random quote to the page.
  */
 
-function addRandomQuote() {
+
+function promptRandomQuote() {
   const quotes =
       ['The secret of getting ahead is getting started.', 'What you do today can improve all your tomorrows',
        'A single sunbeam is enough to drive away many shadows',
@@ -24,9 +25,9 @@ function addRandomQuote() {
        'A true friend never gets in your way unless you happen to be going down.'];
 
   // Pick a random quote.
-  const quote = quotes[Math.floor(Math.random() * quotes.length)];
+    const quote = quotes[Math.floor(Math.random() * quotes.length)];
 
-  // Add it to the page.
-  const quoteContainer = document.getElementById('quote-container');
-  quoteContainer.innerText = quote;
+  // Show message.
+  // TO DO: make message a pop up
+    alert(quote)
 }
