@@ -66,6 +66,10 @@ p {
     text-decoration: none;
 }
 
+#quote-container:hover {
+    cursor: pointer;
+}
+
 #buttons.box {
     padding: 10px;
 }
