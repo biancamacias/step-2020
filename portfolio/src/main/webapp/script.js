@@ -27,7 +27,7 @@ function pickRandomQuote() {
     const quote = quotes[Math.floor(Math.random() * quotes.length)];
 
   // Return quote as string to be used elsewhere.
-    return quote
+    return quote;
 }
 
 function popupMessage() {
