@@ -52,6 +52,12 @@ p {
     padding: 20px;
 }
 
+#quoteDisplayer {
+    color: aliceblue;
+    font-style: italic;
+    padding: 10px 10px;
+}
+
 #quote-button {
     background-color: #a3a0ba;
     border: 0px;
