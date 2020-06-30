@@ -33,5 +33,5 @@ function pickRandomQuote() {
 
 function popupMessage() {
     const quoteToDisplay = pickRandomQuote();
-    document.getElementById("quote-displayer").innerText = quoteToDisplay;
+    document.getElementById('quote-displayer').innerText = quoteToDisplay;
 }
