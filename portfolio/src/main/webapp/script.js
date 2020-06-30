@@ -14,7 +14,7 @@
 
 /**
  * Adds a random quote to the page as a hidden div that toggles between
-    randomized quotes once clicked and popupMessage() is called
+ * randomized quotes once clicked and popupMessage() is called
  */
 
 function pickRandomQuote() {
