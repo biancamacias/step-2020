@@ -31,7 +31,7 @@ function pickRandomQuote() {
     return quote;
 }
 
-function popupMessage() {
+function divMessage() {
     const quoteToDisplay = pickRandomQuote();
     document.getElementById('quote-displayer').innerText = quoteToDisplay;
 }
