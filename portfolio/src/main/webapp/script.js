@@ -13,7 +13,8 @@
 // limitations under the License.
 
 /**
- * Adds a random quote to the page as a popup.
+ * Adds a random quote to the page as a hidden div that toggles between
+    randomized quotes once clicked and popupMessage() is called
  */
 
 function pickRandomQuote() {
@@ -31,6 +32,6 @@ function pickRandomQuote() {
 }
 
 function popupMessage() {
-    var quoteToDisplay = pickRandomQuote();
+    const quoteToDisplay = pickRandomQuote();
     document.getElementById("quoteDisplayer").innerHTML = quoteToDisplay;
 }
