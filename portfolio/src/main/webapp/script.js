@@ -42,7 +42,7 @@ function fetchMyName() {
     responsePromise.then(handleResponse);
 }
 
-function handleResponse (response) {
+function handleResponse(response) {
     console.log('Handling response...');
     const textFromPromise = response.text();
     textFromPromise.then(addName);

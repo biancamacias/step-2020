@@ -73,6 +73,21 @@ p {
     cursor: pointer;
 }
 
+#name-button {
+    background-color: #a3a0ba;
+    border: 0px;
+    color: black;
+    display: inline-block;
+    margin: 10px;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+}
+
+#name-button:hover {
+    cursor: pointer;
+}
+
 #buttons.box {
     padding: 10px;
 }
