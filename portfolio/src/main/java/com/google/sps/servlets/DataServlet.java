@@ -29,5 +29,21 @@ public class DataServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text/html;");
     response.getWriter().println("Hello Bianca!");
+
+    String[] ArrayList = {"Hello World", "Hello B", "Hello You"};
+    String json = convertToJson(ArrayList);
+
+    response.setContentType("application/json;");
+    response.getWriter().println(json);
+  }
+
+  private String convertToJson(String[] ArrayList) {
+    String json = "{";
+    json += ArrayList[0];
+    json += ArrayList[1];
+    json += ArrayList[2];
+    json += "}";
+    return json;
   }
 }
+
