@@ -35,3 +35,21 @@ function divMessage() {
     const quoteToDisplay = pickRandomQuote();
     document.getElementById('quote-displayer').innerText = quoteToDisplay;
 }
+
+function fetchMyName() {
+    console.log('Fetching your name...');
+    const responsePromise = fetch('/data');
+    responsePromise.then(handleResponse);
+}
+
+function handleResponse () {
+    console.log('Handling response...');
+    const textFromPromise = response.text();
+    textFromPromise.then(addName);
+}
+
+function addName(name) {
+    console.log('Adding name to DOM...');
+    const nameButton = document.getElementById('name-button');
+    nameButton.innerText = name;
+}
