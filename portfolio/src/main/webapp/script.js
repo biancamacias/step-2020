@@ -50,6 +50,6 @@ function handleResponse () {
 
 function addName(name) {
     console.log('Adding name to DOM...');
-    const nameButton = document.getElementById('name-button');
+    const nameButton = document.getElementById('name-container');
     nameButton.innerText = name;
 }
