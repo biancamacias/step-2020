@@ -36,6 +36,9 @@ function divMessage() {
     document.getElementById('quote-displayer').innerText = quoteToDisplay;
 }
 
+/**
+ * Functions fetch text from server and add it to page
+ */
 function fetchMyName() {
     console.log('Fetching your name...');
     const responsePromise = fetch('/data');
@@ -52,4 +55,26 @@ function addName(name) {
     console.log('Adding name to DOM...');
     const nameButton = document.getElementById('name-container');
     nameButton.innerText = name;
+}
+
+/**
+ * Functions fetch JSON string from server and add it to page
+ */
+function fetchArrayList() {
+    console.log('Fetching messages...');
+    const responsePromise = fetch('/data');
+    responsePromise.then(handleArrayResponse);
+}
+
+function handleArrayResponse(response) {
+    console.log('Handling response...');
+    const jsonFromPromise = response.json();
+    jsonFromPromise.then(addMessages);
+}
+
+function createDivElement(message) {
+    console.log('Adding messages to DOM...');
+    const divElement = document.createElement('div');
+    divElement.innerText = message;
+    return divElement;
 }
