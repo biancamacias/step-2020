@@ -30,8 +30,8 @@ public class DataServlet extends HttpServlet {
     response.setContentType("text/html;");
     response.getWriter().println("Hello Bianca!");
 
-    String[] ArrayList = {"Hello World", "Hello B", "Hello You"};
-    String json = convertToJson(ArrayList);
+    String[] ArrayList = {"Earth has seven continents", "web development is hard", "TGIF"};
+    String json = convertToJsonUsingGson(ArrayList);
 
     response.setContentType("application/json;");
     response.getWriter().println(json);
@@ -39,11 +39,16 @@ public class DataServlet extends HttpServlet {
 
   private String convertToJson(String[] ArrayList) {
     String json = "{";
-    json += ArrayList[0];
-    json += ArrayList[1];
+    json += ArrayList[0] + ", ";
+    json += ArrayList[1] + ", ";
     json += ArrayList[2];
     json += "}";
     return json;
   }
-}
 
+  private String convertToJsonUsingGson(String[] ArrayList) {
+      Gson gson = new Gson();
+      String json = gson.toJson(ArrayList);
+      return json;
+  }
+}
