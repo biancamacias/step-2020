@@ -30,4 +30,10 @@ public class DataServlet extends HttpServlet {
     response.setContentType("text/plain;");
     response.getWriter().println("Hello Bianca!");
   }
+
+  private String convertToJsonUsingGson(String ArrayList) {
+      Gson gson = new Gson();
+      String json = gson.toJson(ArrayList);
+      return json;
+  }
 }
