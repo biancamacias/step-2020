@@ -52,6 +52,7 @@ function addName(name) {
     console.log('Adding name to DOM...');
     const nameDiv = document.getElementById('name-container');
     nameDiv.innerText = name;
+
 }
 
 function fetchComments() {
