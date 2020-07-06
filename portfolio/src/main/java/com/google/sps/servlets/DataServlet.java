@@ -32,10 +32,16 @@ public class DataServlet extends HttpServlet {
     response.setContentType("text/plain;");
     response.getWriter().println("Hello Bianca!");
 
+    // Convert comments to JSON
     ArrayList<String> comments = new ArrayList<String>();
     comments.add("This is amazing!");
     comments.add("10/10!");
     comments.add("LGTM");
+    String json = convertToJsonUsingGson(comments);
+
+    // Send JSON as response
+    response.setContentType("application/json;");
+    response.getWriter().println(json);
   }
 
   private String convertToJsonUsingGson(ArrayList<String> commentsToConvert) {
