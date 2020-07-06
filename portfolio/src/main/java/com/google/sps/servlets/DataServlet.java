@@ -38,9 +38,9 @@ public class DataServlet extends HttpServlet {
     comments.add("LGTM");
   }
 
-  private String convertToJsonUsingGson(String ArrayList) {
+  private String convertToJsonUsingGson(ArrayList<String> commentsToConvert) {
       Gson gson = new Gson();
-      String json = gson.toJson(ArrayList);
+      String json = gson.toJson(commentsToConvert);
       return json;
   }
 }
