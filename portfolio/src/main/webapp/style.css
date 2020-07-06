@@ -58,7 +58,7 @@ p {
     padding: 10px 10px;
 }
 
-#quote-button {
+#quote-button, #name-button {
     background-color: #a3a0ba;
     border: 0px;
     color: black;
@@ -69,22 +69,7 @@ p {
     text-decoration: none;
 }
 
-#quote-button:hover {
-    cursor: pointer;
-}
-
-#name-button {
-    background-color: #a3a0ba;
-    border: 0px;
-    color: black;
-    display: inline-block;
-    margin: 10px;
-    padding: 14px 25px;
-    text-align: center;
-    text-decoration: none;
-}
-
-#name-button:hover {
+#quote-button:hover, #name-button:hover {
     cursor: pointer;
 }
 
