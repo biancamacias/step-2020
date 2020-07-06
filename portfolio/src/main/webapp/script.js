@@ -58,5 +58,19 @@ function fetchComments() {
     fetch('/data').then(response => response.json()).then((comments) => {
         console.log('Fetching comments...');
         console.log(comments);
+        const commentListElement = document.getElementById('comment-container');
+        commentListElement.innerHTML = '';
+        commentListElement.appendChild(
+            createListElement('Comment 1: ' + comments[0]));
+        commentListElement.appendChild(
+            createListElement('Comment 2: ' + comments[1]));
+        commentListElement.appendChild(
+            createListElement('Comment 3: ' + comments[2]));
     });
+}
+
+function createListElement (text) {
+    const liElement = document.createElement('li');
+    liElement.innerText = text;
+    return liElement;
 }
