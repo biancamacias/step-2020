@@ -53,3 +53,10 @@ function addName(name) {
     const nameButton = document.getElementById('name-container');
     nameButton.innerText = name;
 }
+
+function fetchComments() {
+    fetch('/data').then(response => response.json()).then((comments) => {
+        console.log('Fetching comments...');
+        console.log(comments);
+    });
+}

@@ -29,8 +29,8 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/plain;");
-    response.getWriter().println("Hello Bianca!");
+    // response.setContentType("text/plain;");
+    // response.getWriter().println("Hello Bianca!");
 
     // Convert comments to JSON
     ArrayList<String> comments = new ArrayList<String>();
