@@ -35,10 +35,6 @@ public class DataServlet extends HttpServlet {
     String comment = request.getParameter("comment-input");
     commentsList.add(comment);
 
-    response.setContentType("application/json");
-    String json = convertToJsonUsingGson(commentsList);
-    response.getWriter().println(json);
-
     response.sendRedirect("/index.html");
   }
 
