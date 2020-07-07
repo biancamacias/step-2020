@@ -13,10 +13,11 @@
 // limitations under the License.
 
 /**
- * Adds a random quote to the page.
+ * Adds a random quote to the page as a hidden div that toggles between
+ * randomized quotes once clicked and popupMessage() is called
  */
 
-function promptRandomQuote() {
+function pickRandomQuote() {
   const quotes =
       ['The secret of getting ahead is getting started.', 'What you do today can improve all your tomorrows',
        'A single sunbeam is enough to drive away many shadows',
@@ -26,7 +27,11 @@ function promptRandomQuote() {
   // Pick a random quote.
     const quote = quotes[Math.floor(Math.random() * quotes.length)];
 
-  // Show message.
-  // TO DO: make message a pop up
-    alert(quote)
+  // Return quote as string to be used elsewhere.
+    return quote;
+}
+
+function divMessage() {
+    const quoteToDisplay = pickRandomQuote();
+    document.getElementById('quote-displayer').innerText = quoteToDisplay;
 }

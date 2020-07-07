@@ -52,8 +52,15 @@ p {
     padding: 20px;
 }
 
-#quote-container {
+#quote-displayer {
+    color: aliceblue;
+    font-style: italic;
+    padding: 10px 10px;
+}
+
+#quote-button {
     background-color: #a3a0ba;
+    border: 0px;
     color: black;
     display: inline-block;
     margin: 10px;
@@ -62,7 +69,7 @@ p {
     text-decoration: none;
 }
 
-#quote-container:hover {
+#quote-button:hover {
     cursor: pointer;
 }
 
