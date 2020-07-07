@@ -38,6 +38,12 @@ public class DataServlet extends HttpServlet {
     String comment = request.getParameter("comment-input");
     commentsList.add(comment);
 
+    Entity commentEntity = new Entity("stringComment");
+    commentEntity.setProperty("comment", comment);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(commentEntity);
+
     response.sendRedirect("/index.html");
   }
 
