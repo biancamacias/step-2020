@@ -60,12 +60,10 @@ function fetchComments() {
         console.log(comments);
         const commentListElement = document.getElementById('comment-container');
         commentListElement.innerHTML = '';
-        commentListElement.appendChild(
-            createListElement('Comment 1: ' + comments[0]));
-        commentListElement.appendChild(
-            createListElement('Comment 2: ' + comments[1]));
-        commentListElement.appendChild(
-            createListElement('Comment 3: ' + comments[2]));
+        for (index = 0; index < comments.length; index ++) {
+            commentListElement.appendChild(
+                createListElement(comments[index]));
+        }
     });
 }
 

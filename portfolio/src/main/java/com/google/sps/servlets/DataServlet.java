@@ -40,7 +40,7 @@ public class DataServlet extends HttpServlet {
     response.getWriter().println(json);
   }
 
-  private String convertToJsonUsingGson(ArrayList<String> commentsToConvert) {
+  private static String convertToJsonUsingGson(ArrayList<String> commentsToConvert) {
       Gson gson = new Gson();
       String json = gson.toJson(commentsToConvert);
       return json;
