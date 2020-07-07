@@ -27,14 +27,16 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  List<String> commentsList = new ArrayList<String>();
+
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    // Convert comments to JSON
-    List<String> comments = new ArrayList<String>();
-    String json = convertToJsonUsingGson(comments);
+    // Gets comment input from <form> by id selector
+    String comment = request.getParameter("comment-input");
+    commentsList.add(comment);
 
-    // Send JSON as response
-    response.setContentType("application/json;");
+    response.setContentType("application/json");
+    String json = convertToJsonUsingGson(commentsList);
     response.getWriter().println(json);
   }
 
