@@ -42,16 +42,16 @@ function fetchMyName() {
     responsePromise.then(handleResponse);
 }
 
-function handleResponse(response) {
+function handleNameResponse(nameResponse) {
     console.log('Handling response...');
-    const textFromPromise = response.text();
-    textFromPromise.then(addName);
+    const namePromise = nameResponse.text();
+    namePromise.then(addName);
 }
 
 function addName(name) {
     console.log('Adding name to DOM...');
-    const nameButton = document.getElementById('name-container');
-    nameButton.innerText = name;
+    const nameDiv = document.getElementById('name-container');
+    nameDiv.innerText = name;
 }
 
 function fetchComments() {
