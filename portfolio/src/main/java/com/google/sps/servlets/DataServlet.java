@@ -42,7 +42,7 @@ public class DataServlet extends HttpServlet {
       PreparedQuery results = datastore.prepare(query);
 
       for (Entity entity : results.asIterable()) {
-          String commentInQuery = (String) entity.getProperty("Comment");
+          String commentInQuery = (String) entity.getProperty("comment");
 
           commentsList.add(commentInQuery);
       }
