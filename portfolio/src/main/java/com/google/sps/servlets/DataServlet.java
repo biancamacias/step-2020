@@ -26,7 +26,21 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/plain;");
-    response.getWriter().println("Hello Bianca!");
+    // Convert comments to JSON
+    ArrayList<String> comments = new ArrayList<String>();
+    comments.add("This is amazing!");
+    comments.add("10/10!");
+    comments.add("LGTM");
+    String json = convertToJsonUsingGson(comments);
+
+    // Send JSON as response
+    response.setContentType("application/json;");
+    response.getWriter().println(json);
+  }
+
+  private static String convertToJsonUsingGson(ArrayList<String> commentsToConvert) {
+      Gson gson = new Gson();
+      String json = gson.toJson(commentsToConvert);
+      return json;
   }
 }
