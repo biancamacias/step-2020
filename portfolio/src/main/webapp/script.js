@@ -53,3 +53,22 @@ function addName(name) {
     const nameDiv = document.getElementById('name-container');
     nameDiv.innerText = name;
 }
+
+function fetchComments() {
+    fetch('/data').then(response => response.json()).then((comments) => {
+        console.log('Fetching comments...');
+        console.log(comments);
+        const commentListElement = document.getElementById('comment-container');
+        commentListElement.innerHTML = '';
+        for (index = 0; index < comments.length; index ++) {
+            commentListElement.appendChild(
+                createListElement(comments[index]));
+        }
+    });
+}
+
+function createListElement(text) {
+    const liElement = document.createElement('li');
+    liElement.innerText = text;
+    return liElement;
+}
