@@ -17,6 +17,8 @@ package com.google.sps.servlets;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.FetchOptions;
+import com.google.appengine.api.datastore.FetchOptions.Builder;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
@@ -40,8 +42,9 @@ public class DataServlet extends HttpServlet {
       Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
       PreparedQuery results = datastore.prepare(query);
+      List<Entity> limitedResults = results.asList(FetchOptions.Builder.withLimit(2));
 
-      for (Entity entity : results.asIterable()) {
+      for (Entity entity : limitedResults) {
           String commentInQuery = (String) entity.getProperty("comment");
 
           commentsList.add(commentInQuery);
