@@ -39,8 +39,8 @@ public class DataServlet extends HttpServlet {
   }
 
   private static String convertToJsonUsingGson(List<String> commentsToConvert) {
-      Gson gson = new Gson();
-      String json = gson.toJson(commentsToConvert);
-      return json;
+    Gson gson = new Gson();
+    String json = gson.toJson(commentsToConvert);
+    return json;
   }
 }
