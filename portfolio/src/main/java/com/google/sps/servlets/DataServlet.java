@@ -27,7 +27,7 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Convert comments to JSON
-    List<String> comments = new ArrayList<String>();
+    List<String> comments = new ArrayList<>();
     comments.add("This is amazing!");
     comments.add("10/10!");
     comments.add("LGTM");
