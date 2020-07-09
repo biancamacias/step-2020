@@ -60,9 +60,9 @@ function fetchComments() {
         console.log(comments);
         const commentListElement = document.getElementById('comment-list');
         commentListElement.innerHTML = '';
-        for (index = 0; index < comments.length; index ++) {
+        for (const tempComment of comments) {
             commentListElement.appendChild(
-                createListElement(comments[index]));
+                createListElement(tempComment));
         }
     });
 }
