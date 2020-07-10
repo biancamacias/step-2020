@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/delete-data")
 public class DeleteServlet extends HttpServlet {
+
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
        
