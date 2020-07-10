@@ -24,6 +24,8 @@ public class DeleteServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-       
+        // TO DO: add data structure of keys and add while loop that deletes keys from that data structure
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+        response.sendRedirect("/index.html");
     }
 }
