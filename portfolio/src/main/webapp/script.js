@@ -53,3 +53,9 @@ function addName(name) {
     const nameDiv = document.getElementById('name-container');
     nameDiv.innerText = name;
 }
+
+function createMap() {
+    const map = new google.maps.Map(
+        document.getElementById('map'),
+        {center: {lat: 34.052, lng: -118.245}, zoom: 10});
+}
