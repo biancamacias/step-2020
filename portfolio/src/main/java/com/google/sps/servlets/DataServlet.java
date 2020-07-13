@@ -32,13 +32,15 @@ import javax.servlet.http.HttpServletResponse;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-
-  List<String> commentsList = new ArrayList<String>();
+    private static final String COMMENT_TABLE_NAME = "Comment";
+    private static final String COMMENT_COLUMN_NAME = "comment";
+    private static final String TIMESTAMP_COLUMN_NAME = "submit_time";
+    private final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    List<String> commentsList = new ArrayList<String>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
-      DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+      Query query = new Query("Comment").addSort("submit_time", SortDirection.DESCENDING);
       PreparedQuery results = datastore.prepare(query);
 
       for (Entity entity : results.asIterable()) {
@@ -56,13 +58,12 @@ public class DataServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
       // Gets comment input from <form> by id selector
       String comment = request.getParameter("comment-input");
-      long timestamp = System.currentTimeMillis();
+      long submit_time = System.currentTimeMillis();
       
-      Entity commentEntity = new Entity("Comment");
-      commentEntity.setProperty("comment", comment);
-      commentEntity.setProperty("timestamp", timestamp);
+      Entity commentEntity = new Entity(COMMENT_TABLE_NAME);
+      commentEntity.setProperty(COMMENT_COLUMN_NAME, comment);
+      commentEntity.setProperty(TIMESTAMP_COLUMN_NAME, submit_time);
       
-      DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
       datastore.put(commentEntity);
       
       response.sendRedirect("/index.html");
