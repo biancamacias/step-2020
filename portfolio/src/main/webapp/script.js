@@ -58,4 +58,22 @@ function createMap() {
     const map = new google.maps.Map(
         document.getElementById('map'),
         {center: {lat: 34.052, lng: -118.245}, zoom: 10});
+
+    const favoriteRestaurantMarker = new google.maps.Marker({
+        position: {lat: 34.0831169, lng: -118.3410553},
+        map: map,
+        title: 'Italian Dream'
+    });
+
+    const favoriteOutdoorMarketMarker = new google.maps.Marker({
+        position: {lat: 34.0498131, lng: -118.2519937},
+        map: map,
+        title: 'Grand Central Market'
+    });
+
+    const familyRootsMarker = new google.maps.Marker({
+        position: {lat:34.0095081, lng: -118.2896097},
+        map: map,
+        title: 'East Los Angeles'
+    });
 }
