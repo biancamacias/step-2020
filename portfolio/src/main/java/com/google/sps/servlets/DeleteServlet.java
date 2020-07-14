@@ -21,9 +21,6 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/delete-data")
 public class DeleteServlet extends HttpServlet {
-    private static final String COMMENT_TABLE_NAME = "Comment";
-    private static final String COMMENT_COLUMN_NAME = "comment";
-    private static final String TIMESTAMP_COLUMN_NAME = "submit_time";
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
     @Override
