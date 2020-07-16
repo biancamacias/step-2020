@@ -22,6 +22,9 @@ public class Greeter {
    * Returns a greeting for the given name.
    */
   public String greet(String name) {
-    return "Hello " + name;
+    String whitespaceRemoved = name.replaceAll(" ", "");
+    String fixedName = whitespaceRemoved.replaceAll("[^a-zA-Z0-9]", "");
+    
+    return "Hello " + fixedName;
   }
 }
