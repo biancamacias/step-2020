@@ -14,10 +14,20 @@
 
 package com.google.sps;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class FindMeetingQuery {
+  // TODO(biancamacias): get available times from events
+  // TODO(biancamacias): sort times with attendees
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
-    throw new UnsupportedOperationException("TODO: Implement this method.");
+    Collection<String> attendees = request.getAttendees();
+    long eventDuration = request.getDuration();
+    // TODO(biancamacias): find time range that meeting can be for amount of time requested
+    // TODO(biancamacias): function must return that time
   }
 }
