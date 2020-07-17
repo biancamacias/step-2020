@@ -23,7 +23,6 @@ public class Greeter {
    */
   public String greet(String name) {
     String fixedName = name.replaceAll("[^a-zA-Z0-9]\\s*", "");
-    
     return "Hello " + fixedName;
   }
 }
