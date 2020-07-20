@@ -19,15 +19,57 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public final class FindMeetingQuery {
-  // TODO(biancamacias): get available times from events
-  // TODO(biancamacias): sort times with attendees
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
-    Collection<String> attendees = request.getAttendees();
-    long eventDuration = request.getDuration();
-    // TODO(biancamacias): find time range that meeting can be for amount of time requested
-    // TODO(biancamacias): function must return that time
+    
+    private static List<TimeRange> sortTimesByStart(List<TimeRange> timeRanges) {
+      timeRanges.sort(TimeRange.ORDER_BY_START);
+      return timeRanges;
+    }
+
+    // TODO(biancamacias): finish implementing ---->
+    private static List<Event> sortEventsByStart(Collection<Event> events) {
+      List<Event> sortedEvents = new ArrayList<>();
+      return sortedEvents;
+    }
+
+    // TODO(biancamacias): finish implementing ---->
+    private static List<TimeRange> findClosedTimeRanges(Collection<Event> events, Collection<String> attendees) {
+      List<TimeRange> closedTimeRanges = new ArrayList<>();
+      return closedTimeRanges;
+    }
+
+    private static List<TimeRange> findOpenTimeRanges(Collection<Event> events, Collection<String> attendees, long duration) {
+      List<TimeRange> openTimeRanges = new ArrayList<>();
+      int start = TimeRange.START_OF_DAY;
+      int end = TimeRange.END_OF_DAY;
+      int allday = TimeRange.WHOLE_DAY;
+      int minutesStart = 1440;
+
+      // edge cases before continuing
+      if (events.isEmpty() || events == null) {
+        openTimeRanges.add(allday);
+        return openTimeRanges;
+      }
+
+      if (attendees.isEmpty() || attendees == null) {
+        openTimeRanges.add(allday)
+        return openTimeRanges;
+      }
+
+      if (duration > minutesStart) {
+        return openTimeRanges;
+      }
+
+      List<TimeRange> closedTimeRanges = findClosedTimeRanges(events, attendees);
+      List<Event> sortedEvents = sortEventsByStart(events);
+      // TODO(biancamacias): for loop or while loop, which checks if time is in closed time ranges or not
+      // TODO(biancamacias): if when meeting starts < start, make the bigger of the two the new start
+      // TODO(biancamacias): if start and duration of meeting are <= meeting start, then add time range
+      // TODO(biancamacias): if start and duration <= end of day, add time range
+    }
   }
 }
