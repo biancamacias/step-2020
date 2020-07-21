@@ -28,13 +28,18 @@ public final class NameTest extends Mockito {
   private final DataServlet servlet = new DataServlet();
 
   @Mock
-  private HttpServletRequest request;
+  private final HttpServletRequest request;
   @Mock
-  private HttpServletResponse response;
+  private final HttpServletResponse response;
   @Mock
-  private ServletConfig servletConfig;
+  private final ServletConfig servletConfig;
   @Mock
-  private ServletOutputStream outputStream;
+  private final ServletOutputStream outputStream;
+
+  @Before
+  public void setUp() {
+    MockitoAnnotations.initMocks(this);
+  }
 
   @Test
   public void getMyName() throws IOException {
