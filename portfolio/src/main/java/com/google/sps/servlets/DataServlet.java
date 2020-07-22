@@ -34,21 +34,20 @@ import javax.servlet.http.HttpServletResponse;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-    private static final String COMMENT_TABLE_NAME = "Comment";
-    private static final String COMMENT_COLUMN_NAME = "comment";
-    private static final String TIMESTAMP_COLUMN_NAME = "submit_time";
+    static final String COMMENT_TABLE_NAME = "Comment";
+    static final String COMMENT_COLUMN_NAME = "comment";
+    static final String TIMESTAMP_COLUMN_NAME = "submit_time";
     private final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     List<String> commentsList = new ArrayList<String>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      Query query = new Query("Comment").addSort("submit_time", SortDirection.DESCENDING);
+      Query query = new Query(COMMENT_TABLE_NAME).addSort(TIMESTAMP_COLUMN_NAME, SortDirection.DESCENDING);
       PreparedQuery results = datastore.prepare(query);
       List<Entity> limitedResults = results.asList(FetchOptions.Builder.withLimit(2));
 
       for (Entity entity : limitedResults) {
-          String commentInQuery = (String) entity.getProperty("comment");
-
+          String commentInQuery = (String) entity.getProperty(COMMENT_COLUMN_NAME);
           commentsList.add(commentInQuery);
       }
     

@@ -62,7 +62,7 @@ function fetchComments() {
         commentListElement.innerHTML = '';
         for (const tempComment of comments) {
             commentListElement.appendChild(
-            createCommentElement(comments[index]));
+            createCommentElement(tempComment));
         }
     });
 }
