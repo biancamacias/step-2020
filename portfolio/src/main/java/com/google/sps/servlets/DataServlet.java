@@ -47,8 +47,8 @@ public class DataServlet extends HttpServlet {
     List<Entity> limitedResults = results.asList(FetchOptions.Builder.withLimit(2));
 
     for (Entity entity : limitedResults) {
-        String commentInQuery = (String) entity.getProperty(COMMENT_COLUMN_NAME);
-        commentsList.add(commentInQuery);
+      String commentInQuery = (String) entity.getProperty(COMMENT_COLUMN_NAME);
+      commentsList.add(commentInQuery);
     }
     
     response.setContentType("application/json");
