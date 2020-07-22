@@ -38,12 +38,12 @@ public class DataServlet extends HttpServlet {
     static final String COMMENT_COLUMN_NAME = "comment";
     static final String TIMESTAMP_COLUMN_NAME = "submit_time";
     private final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    List<String> commentsList = new ArrayList<String>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
       Query query = new Query(COMMENT_TABLE_NAME).addSort(TIMESTAMP_COLUMN_NAME, SortDirection.DESCENDING);
       PreparedQuery results = datastore.prepare(query);
+      List<String> commentsList = new ArrayList<String>();
       List<Entity> limitedResults = results.asList(FetchOptions.Builder.withLimit(2));
 
       for (Entity entity : limitedResults) {
