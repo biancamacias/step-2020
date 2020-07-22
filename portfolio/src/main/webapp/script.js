@@ -58,11 +58,11 @@ function fetchComments() {
     fetch('/data').then(response => response.json()).then((comments) => {
         console.log('Fetching comments...');
         console.log(comments);
-        const commentListElement = document.getElementById('comment-container');
+        const commentListElement = document.getElementById('comment-list');
         commentListElement.innerHTML = '';
-        for (index = 0; index < comments.length; index ++) {
+        for (const tempComment of comments) {
             commentListElement.appendChild(
-                createCommentElement(comments[index]));
+            createCommentElement(comments[index]));
         }
     });
 }

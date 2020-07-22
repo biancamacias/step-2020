@@ -51,7 +51,7 @@ public class DataServlet extends HttpServlet {
 
           commentsList.add(commentInQuery);
       }
-
+    
       response.setContentType("application/json");
       String json = convertToJsonUsingGson(commentsList);
       response.getWriter().println(json);
@@ -73,8 +73,8 @@ public class DataServlet extends HttpServlet {
   }
 
   private static String convertToJsonUsingGson(List<String> commentsToConvert) {
-      Gson gson = new Gson();
-      String json = gson.toJson(commentsToConvert);
-      return json;
+    Gson gson = new Gson();
+    String json = gson.toJson(commentsToConvert);
+    return json;
   }
 }
