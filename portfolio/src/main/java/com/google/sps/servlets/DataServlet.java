@@ -34,41 +34,41 @@ import javax.servlet.http.HttpServletResponse;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-    static final String COMMENT_TABLE_NAME = "Comment";
-    static final String COMMENT_COLUMN_NAME = "comment";
-    static final String TIMESTAMP_COLUMN_NAME = "submit_time";
-    private final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    List<String> commentsList = new ArrayList<String>();
+  static final String COMMENT_TABLE_NAME = "Comment";
+  static final String COMMENT_COLUMN_NAME = "comment";
+  static final String TIMESTAMP_COLUMN_NAME = "submit_time";
+  private final DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+  List<String> commentsList = new ArrayList<String>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      Query query = new Query(COMMENT_TABLE_NAME).addSort(TIMESTAMP_COLUMN_NAME, SortDirection.DESCENDING);
-      PreparedQuery results = datastore.prepare(query);
-      List<Entity> limitedResults = results.asList(FetchOptions.Builder.withLimit(2));
+    Query query = new Query(COMMENT_TABLE_NAME).addSort(TIMESTAMP_COLUMN_NAME, SortDirection.DESCENDING);
+    PreparedQuery results = datastore.prepare(query);
+    List<Entity> limitedResults = results.asList(FetchOptions.Builder.withLimit(2));
 
-      for (Entity entity : limitedResults) {
-          String commentInQuery = (String) entity.getProperty(COMMENT_COLUMN_NAME);
-          commentsList.add(commentInQuery);
-      }
+    for (Entity entity : limitedResults) {
+        String commentInQuery = (String) entity.getProperty(COMMENT_COLUMN_NAME);
+        commentsList.add(commentInQuery);
+    }
     
-      response.setContentType("application/json");
-      String json = convertToJsonUsingGson(commentsList);
-      response.getWriter().println(json);
+    response.setContentType("application/json");
+    String json = convertToJsonUsingGson(commentsList);
+    response.getWriter().println(json);
   }
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      // Gets comment input from <form> by id selector
-      String comment = request.getParameter("comment-input");
-      long submit_time = System.currentTimeMillis();
+    // Gets comment input from <form> by id selector
+    String comment = request.getParameter("comment-input");
+    long submit_time = System.currentTimeMillis();
       
-      Entity commentEntity = new Entity(COMMENT_TABLE_NAME);
-      commentEntity.setProperty(COMMENT_COLUMN_NAME, comment);
-      commentEntity.setProperty(TIMESTAMP_COLUMN_NAME, submit_time);
+    Entity commentEntity = new Entity(COMMENT_TABLE_NAME);
+    commentEntity.setProperty(COMMENT_COLUMN_NAME, comment);
+    commentEntity.setProperty(TIMESTAMP_COLUMN_NAME, submit_time);
       
-      datastore.put(commentEntity);
+    datastore.put(commentEntity);
       
-      response.sendRedirect("/index.html");
+    response.sendRedirect("/index.html");
   }
 
   private static String convertToJsonUsingGson(List<String> commentsToConvert) {

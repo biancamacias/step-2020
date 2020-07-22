@@ -19,56 +19,56 @@
 
 function pickRandomQuote() {
   const quotes =
-      ['The secret of getting ahead is getting started.', 'What you do today can improve all your tomorrows',
-       'A single sunbeam is enough to drive away many shadows',
-       'It is never too late to be what you might have been.', 
-       'A true friend never gets in your way unless you happen to be going down.'];
+    ['The secret of getting ahead is getting started.', 'What you do today can improve all your tomorrows',
+    'A single sunbeam is enough to drive away many shadows',
+    'It is never too late to be what you might have been.', 
+    'A true friend never gets in your way unless you happen to be going down.'];
 
   // Pick a random quote.
-    const quote = quotes[Math.floor(Math.random() * quotes.length)];
+  const quote = quotes[Math.floor(Math.random() * quotes.length)];
 
   // Return quote as string to be used elsewhere.
-    return quote;
+  return quote;
 }
 
 function divMessage() {
-    const quoteToDisplay = pickRandomQuote();
-    document.getElementById('quote-displayer').innerText = quoteToDisplay;
+  const quoteToDisplay = pickRandomQuote();
+  document.getElementById('quote-displayer').innerText = quoteToDisplay;
 }
 
 function fetchMyName() {
-    console.log('Fetching your name...');
-    const responsePromise = fetch('/data');
-    responsePromise.then(handleResponse);
+  console.log('Fetching your name...');
+  const responsePromise = fetch('/data');
+  responsePromise.then(handleResponse);
 }
 
 function handleNameResponse(nameResponse) {
-    console.log('Handling response...');
-    const namePromise = nameResponse.text();
-    namePromise.then(addName);
+  console.log('Handling response...');
+  const namePromise = nameResponse.text();
+  namePromise.then(addName);
 }
 
 function addName(name) {
-    console.log('Adding name to DOM...');
-    const nameDiv = document.getElementById('name-container');
-    nameDiv.innerText = name;
+  console.log('Adding name to DOM...');
+  const nameDiv = document.getElementById('name-container');
+  nameDiv.innerText = name;
 }
 
 function fetchComments() {
-    fetch('/data').then(response => response.json()).then((comments) => {
-        console.log('Fetching comments...');
-        console.log(comments);
-        const commentListElement = document.getElementById('comment-list');
-        commentListElement.innerHTML = '';
-        for (const tempComment of comments) {
-            commentListElement.appendChild(
-            createCommentElement(tempComment));
-        }
-    });
+  fetch('/data').then(response => response.json()).then((comments) => {
+    console.log('Fetching comments...');
+    console.log(comments);
+    const commentListElement = document.getElementById('comment-list');
+    commentListElement.innerHTML = '';
+    for (const tempComment of comments) {
+      commentListElement.appendChild(
+      createCommentElement(tempComment));
+    }
+  });
 }
 
 function createCommentElement(comment) {
-    const commentElement = document.createElement('li');
-    commentElement.innerText = comment;
-    return commentElement;
+  const commentElement = document.createElement('li');
+  commentElement.innerText = comment;
+  return commentElement;
 }
