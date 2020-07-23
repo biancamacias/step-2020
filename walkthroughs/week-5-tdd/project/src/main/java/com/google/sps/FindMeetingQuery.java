@@ -62,13 +62,8 @@ public final class FindMeetingQuery {
     int minutesStart = 1440;
 
     // edge cases before continuing
-    if (events.isEmpty() || events == null) {
+    if (events.isEmpty() || events == null || attendees.isEmpty() || attendees == null) {
       freeTimeRanges.add(allday);
-      return freeTimeRanges;
-    }
-
-    if (attendees.isEmpty() || attendees == null) {
-      freeTimeRanges.add(allday)
       return freeTimeRanges;
     }
 
