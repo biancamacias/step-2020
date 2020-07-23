@@ -35,7 +35,7 @@ public final class FindMeetingQuery {
 
   private static List<Event> sortEventsByStart(Collection<Event> events) {
     List<Event> eventsToList = new ArrayList<>(events);
-    Collections.sort(eventstoList, Event.ORDER_BY_START);
+    Collections.sort(eventsToList, Event.ORDER_BY_START);
     return eventsToList;
   }
 
@@ -59,7 +59,7 @@ public final class FindMeetingQuery {
     List<TimeRange> freeTimeRanges = new ArrayList<>();
     int start = TimeRange.START_OF_DAY;
     int end = TimeRange.END_OF_DAY;
-    int allday = TimeRange.WHOLE_DAY;
+    int allday = TimeRange.WHOLE_DAY.duration();
 
     // edge cases before continuing
     if (events.isEmpty() || events == null || attendees.isEmpty() || attendees == null) {
@@ -68,7 +68,7 @@ public final class FindMeetingQuery {
     }
 
     int minutesInADay = 1440; // 60 * 24
-    if (duration > minutesStart) {
+    if (duration > minutesInADay) {
       return freeTimeRanges;
     }
 
