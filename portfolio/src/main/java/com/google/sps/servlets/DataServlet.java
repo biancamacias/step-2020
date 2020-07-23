@@ -45,12 +45,14 @@ public class DataServlet extends HttpServlet {
     PreparedQuery results = datastore.prepare(query);
     List<String> commentsList = new ArrayList<String>();
     int hardCodedNumOfCommentsToDisplay = 2;
-    List<Entity> limitedResults = results.asList(FetchOptions.Builder.withLimit(hardCodedNumOfCommentsToDisplay));
+    List<Entity> limitedResults =
+        results.asList(FetchOptions.Builder.withLimit(hardCodedNumOfCommentsToDisplay));
 
-    for (Entity entity : limitedResults) {
-      String commentInQuery = (String) entity.getProperty(COMMENT_COLUMN_NAME);
-      commentsList.add(commentInQuery);
-    }
+    List commentsList =
+        limitedResults.stream()
+            .map(entity -> entity.getProperty(COMMENT_COLUMN_NAME))
+            .map(String.class::cast)
+            .collect(toList());
 
     response.setContentType("application/json");
     String json = convertToJsonUsingGson(commentsList);
