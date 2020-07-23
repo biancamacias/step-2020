@@ -13,7 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletOutputStream;
 import org.junit.Assert;
 import org.junit.Before;
@@ -25,25 +24,23 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 @RunWith(JUnit4.class)
-public final class NameTest extends Mockito {
+public final class NameTest {
+
   private final DataServlet servlet = new DataServlet();
 
-  @Mock private final HttpServletRequest request;
-  @Mock private final HttpServletResponse response;
-  @Mock private final ServletConfig servletConfig;
-  @Mock private final ServletOutputStream outputStream;
-
-  @Before
-  public void setUp() {
-    MockitoAnnotations.initMocks(this);
-  }
+  @Mock
+  private final HttpServletRequest request;
+  @Mock
+  private final HttpServletResponse response;
+  @Mock
+  private final ServletOutputStream outputStream;
 
   @Test
   public void getMyName() throws IOException {
-   when(servlet.getServletConfig()).thenReturn(servletConfig);
-   when(response.getOutputStream()).thenReturn(outputStream);
-   servlet.doGet(request, response);
-
-   verify(outputStream).println("Hello Bianca!");
+    when(response.getOutputStream()).thenReturn(outputStream);
+    servlet.doGet(request, response);
+    
+    verify(response).setContentType("plain/text");
+    verify(outputStream).println("Hello Bianca!");
   }
 }
