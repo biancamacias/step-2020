@@ -38,21 +38,21 @@ public final class FindMeetingQuery {
     return sortedEvents;
   }
 
-  private static List<TimeRange> findBusyTimeRanges(Collection<Event> events, Collection<String> attendees) {
+  private static List<TimeRange> findSortedBusyTimeRanges(Collection<Event> events, Collection<String> attendees) {
     // maybe not best implementation considering runtime?
-    List<TimeRange> busyTimeRanges = new ArrayList<>();
+    List<TimeRange> sortedBusyTimeRanges = new ArrayList<>();
     for (Event event : events) {
       for (String attendee : attendees) {
         if (event.getAttendees().contains(attendee)) {
-          closedTimeRanges.add(event.getWhen());
+          sortedBusyTimeRanges.add(event.getWhen());
         }
       }
     }
-    return busyTimeRanges;
+    return sortTimesByStart(sortedBusyTimeRanges);
   }
 
-  private static List<TimeRange> findOpenTimeRanges(Collection<Event> events, Collection<String> attendees, long duration) {
-    List<TimeRange> openTimeRanges = new ArrayList<>();
+  private static List<TimeRange> findFreeTimeRanges(Collection<Event> events, Collection<String> attendees, long duration) {
+    List<TimeRange> freeTimeRanges = new ArrayList<>();
     int start = TimeRange.START_OF_DAY;
     int end = TimeRange.END_OF_DAY;
     int allday = TimeRange.WHOLE_DAY;
@@ -60,20 +60,20 @@ public final class FindMeetingQuery {
 
     // edge cases before continuing
     if (events.isEmpty() || events == null) {
-      openTimeRanges.add(allday);
-      return openTimeRanges;
+      freeTimeRanges.add(allday);
+      return freeTimeRanges;
     }
 
     if (attendees.isEmpty() || attendees == null) {
-      openTimeRanges.add(allday)
-      return openTimeRanges;
+      freeTimeRanges.add(allday)
+      return freeTimeRanges;
     }
 
     if (duration > minutesStart) {
-      return openTimeRanges;
+      return freeTimeRanges;
     }
 
-    List<TimeRange> closedTimeRanges = findClosedTimeRanges(events, attendees);
+    List<TimeRange> busyTimeRanges = findSortedBusyTimeRanges(events, attendees);
     List<Event> sortedEvents = sortEventsByStart(events);
     // TODO(biancamacias): for loop or while loop, which checks if time is in closed time ranges or not
     // TODO(biancamacias): if when meeting starts < start, make the bigger of the two the new start
