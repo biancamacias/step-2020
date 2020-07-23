@@ -23,7 +23,7 @@ public final class FindMeetingQuery {
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
     Collection<String> attendees = request.getAttendees();
     long durationOfMeeting = request.getDuration();
-    List<TImeRange> freeTimeRanges = findFreeTimeRanges(events, attendees, duration);
+    List<TimeRange> freeTimeRanges = findFreeTimeRanges(events, attendees, durationOfMeeting);
     return freeTimeRanges;
   }
 
@@ -34,7 +34,7 @@ public final class FindMeetingQuery {
 
   private static List<Event> sortEventsByStart(List<Event> events) {
     Collections.sort(events, Event.ORDER_BY_START);
-    return sortedEventsByStart;
+    return events;
   }
 
   private static List<TimeRange> findSortedBusyTimeRanges(
@@ -51,14 +51,13 @@ public final class FindMeetingQuery {
     return sortTimesByStart(sortedBusyTimeRanges);
   }
 
-  // TODO(biancamacias) finish implementing ---->
+  // TODO(biancamacias): finish fixing this ---->
   private static List<TimeRange> findFreeTimeRanges(
       Collection<Event> events, Collection<String> attendees, long duration) {
     List<TimeRange> freeTimeRanges = new ArrayList<>();
     int start = TimeRange.START_OF_DAY;
     int end = TimeRange.END_OF_DAY;
     int allday = TimeRange.WHOLE_DAY;
-    int minutesStart = 1440;
 
     // edge cases before continuing
     if (events.isEmpty() || events == null || attendees.isEmpty() || attendees == null) {
@@ -66,17 +65,33 @@ public final class FindMeetingQuery {
       return freeTimeRanges;
     }
 
+    int minutesInADay = 1440; // 60 * 24
     if (duration > minutesStart) {
       return freeTimeRanges;
     }
 
-    List<TimeRange> busyTimeRanges = findSortedBusyTimeRanges(events, attendees);
-    List<Event> sortedEvents = sortEventsByStart(events);
-    // TODO(biancamacias): for loop or while loop, which checks if time is in closed time ranges or
-    // not
-    // TODO(biancamacias): if when meeting starts < start, make the bigger of the two the new start
-    // TODO(biancamacias): if start and duration of meeting are <= meeting start, then add time
-    // range
-    // TODO(biancamacias): if start and duration <= end of day, add time range
+    List<TimeRange> sortedBusyTimeRanges = findSortedBusyTimeRanges(events, attendees);
+    for (TimeRange time : sortedBusyTimeRanges) {
+      if (start + duration <= time.start()) {
+        TimeRange freeTime = TimeRange.fromStartEnd(start, time.start(), false);
+        freeTimeRanges.add(freeTime);
+        start = time.start();
+      }
+
+      if (time.start() < start) {
+        if (start >= time.end()) {
+          start = start;
+        } else {
+          start = time.end();
+        }
+      }
+    }
+
+    if (start + duration <= end) {
+      TimeRange freeTime = TimeRange.fromStartEnd(start, end, true);
+      freeTimeRanges.add(freeTime);
+    }
+
+    return freeTimeRanges;
   }
 }
