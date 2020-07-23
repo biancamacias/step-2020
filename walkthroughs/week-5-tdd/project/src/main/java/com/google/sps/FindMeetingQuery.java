@@ -24,7 +24,10 @@ import java.util.Set;
 
 public final class FindMeetingQuery {
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
-    
+    Collection<String> attendees = request.getAttendees();
+    long durationOfMeeting = request.getDuration();
+    List<TImeRange> freeTimeRanges = findFreeTimeRanges(events, attendees, duration);
+    return freeTimeRanges;
   }
     
   private static List<TimeRange> sortTimesByStart(List<TimeRange> timeRanges) {
@@ -50,6 +53,7 @@ public final class FindMeetingQuery {
     return sortTimesByStart(sortedBusyTimeRanges);
   }
 
+  // TODO(biancamacias) finish implementing ---->
   private static List<TimeRange> findFreeTimeRanges(Collection<Event> events, Collection<String> attendees, long duration) {
     List<TimeRange> freeTimeRanges = new ArrayList<>();
     int start = TimeRange.START_OF_DAY;
