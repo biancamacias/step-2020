@@ -28,7 +28,7 @@ public final class FindMeetingQuery {
   }
     
   private static List<TimeRange> sortTimesByStart(List<TimeRange> timeRanges) {
-    timeRanges.sort(TimeRange.ORDER_BY_START);
+    Collections.sort(timeRanges, TimeRange.ORDER_BY_START);
     return timeRanges;
   }
 
@@ -38,10 +38,17 @@ public final class FindMeetingQuery {
     return sortedEvents;
   }
 
-  // TODO(biancamacias): finish implementing ---->
-  private static List<TimeRange> findClosedTimeRanges(Collection<Event> events, Collection<String> attendees) {
-    List<TimeRange> closedTimeRanges = new ArrayList<>();
-    return closedTimeRanges;
+  private static List<TimeRange> findBusyTimeRanges(Collection<Event> events, Collection<String> attendees) {
+    // maybe not best implementation considering runtime?
+    List<TimeRange> busyTimeRanges = new ArrayList<>();
+    for (Event event : events) {
+      for (String attendee : attendees) {
+        if (event.getAttendees().contains(attendee)) {
+          closedTimeRanges.add(event.getWhen());
+        }
+      }
+    }
+    return busyTimeRanges;
   }
 
   private static List<TimeRange> findOpenTimeRanges(Collection<Event> events, Collection<String> attendees, long duration) {
