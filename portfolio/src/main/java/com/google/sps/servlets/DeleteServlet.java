@@ -23,9 +23,9 @@ public class DeleteServlet extends HttpServlet {
         new Query(DataServlet.COMMENT_TABLE_NAME)
             .addSort(DataServlet.TIMESTAMP_COLUMN_NAME, SortDirection.DESCENDING);
     PreparedQuery results = datastore.prepare(query);
-    int deleteComments = 2;
+    int hardCodedNumOfCommentsToDelete = 2;
 
-    for (Entity entity : results.asList(FetchOptions.Builder.withLimit(deleteComments))) {
+    for (Entity entity : results.asList(FetchOptions.Builder.withLimit(hardCodedNumOfCommentsToDelete))) {
       datastore.delete(entity.getKey());
     }
 

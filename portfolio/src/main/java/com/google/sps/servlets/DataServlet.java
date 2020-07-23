@@ -44,7 +44,8 @@ public class DataServlet extends HttpServlet {
         new Query(COMMENT_TABLE_NAME).addSort(TIMESTAMP_COLUMN_NAME, SortDirection.DESCENDING);
     PreparedQuery results = datastore.prepare(query);
     List<String> commentsList = new ArrayList<String>();
-    List<Entity> limitedResults = results.asList(FetchOptions.Builder.withLimit(2));
+    int hardCodedNumOfCommentsToDisplay = 2;
+    List<Entity> limitedResults = results.asList(FetchOptions.Builder.withLimit(hardCodedNumOfCommentsToDisplay));
 
     for (Entity entity : limitedResults) {
       String commentInQuery = (String) entity.getProperty(COMMENT_COLUMN_NAME);
