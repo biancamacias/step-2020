@@ -1,5 +1,6 @@
 package com.google.sps.servlets;
 
+import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -10,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.mockito.junit.MockitoJUnit;
+import org.mockito.*;
+import org.mockito.junit;
 import org.mockito.junit.MockitoRule;
+import org.mockito.junit.MockitoJUnit;
 import org.mockito.Mock;
 
 @RunWith(JUnit4.class)
@@ -19,7 +22,7 @@ public final class NameTest {
 
   private final DataServlet servlet = new DataServlet();
 
-  @Rule public final MockitoRule mockito = MockitoJUnit.rule();
+  public MockitoRule mockito = MockitoJUnit.rule();
 
   @Mock private final HttpServletRequest request;
   @Mock private final HttpServletResponse response;
