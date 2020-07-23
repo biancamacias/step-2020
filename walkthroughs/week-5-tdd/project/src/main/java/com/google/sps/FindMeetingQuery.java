@@ -15,12 +15,9 @@
 package com.google.sps;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public final class FindMeetingQuery {
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
@@ -29,7 +26,7 @@ public final class FindMeetingQuery {
     List<TImeRange> freeTimeRanges = findFreeTimeRanges(events, attendees, duration);
     return freeTimeRanges;
   }
-    
+
   private static List<TimeRange> sortTimesByStart(List<TimeRange> timeRanges) {
     Collections.sort(timeRanges, TimeRange.ORDER_BY_START);
     return timeRanges;
@@ -40,7 +37,8 @@ public final class FindMeetingQuery {
     return sortedEventsByStart;
   }
 
-  private static List<TimeRange> findSortedBusyTimeRanges(Collection<Event> events, Collection<String> attendees) {
+  private static List<TimeRange> findSortedBusyTimeRanges(
+      Collection<Event> events, Collection<String> attendees) {
     // maybe not best implementation considering runtime?
     List<TimeRange> sortedBusyTimeRanges = new ArrayList<>();
     for (Event event : events) {
@@ -54,7 +52,8 @@ public final class FindMeetingQuery {
   }
 
   // TODO(biancamacias) finish implementing ---->
-  private static List<TimeRange> findFreeTimeRanges(Collection<Event> events, Collection<String> attendees, long duration) {
+  private static List<TimeRange> findFreeTimeRanges(
+      Collection<Event> events, Collection<String> attendees, long duration) {
     List<TimeRange> freeTimeRanges = new ArrayList<>();
     int start = TimeRange.START_OF_DAY;
     int end = TimeRange.END_OF_DAY;
@@ -73,9 +72,11 @@ public final class FindMeetingQuery {
 
     List<TimeRange> busyTimeRanges = findSortedBusyTimeRanges(events, attendees);
     List<Event> sortedEvents = sortEventsByStart(events);
-    // TODO(biancamacias): for loop or while loop, which checks if time is in closed time ranges or not
+    // TODO(biancamacias): for loop or while loop, which checks if time is in closed time ranges or
+    // not
     // TODO(biancamacias): if when meeting starts < start, make the bigger of the two the new start
-    // TODO(biancamacias): if start and duration of meeting are <= meeting start, then add time range
+    // TODO(biancamacias): if start and duration of meeting are <= meeting start, then add time
+    // range
     // TODO(biancamacias): if start and duration <= end of day, add time range
-    }
+  }
 }
