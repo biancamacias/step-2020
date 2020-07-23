@@ -32,10 +32,9 @@ public final class FindMeetingQuery {
     return timeRanges;
   }
 
-  // TODO(biancamacias): finish implementing ---->
-  private static List<Event> sortEventsByStart(Collection<Event> events) {
-    List<Event> sortedEvents = new ArrayList<>();
-    return sortedEvents;
+  private static List<Event> sortEventsByStart(List<Event> events) {
+    Collections.sort(events, Event.ORDER_BY_START);
+    return sortedEventsByStart;
   }
 
   private static List<TimeRange> findSortedBusyTimeRanges(Collection<Event> events, Collection<String> attendees) {
