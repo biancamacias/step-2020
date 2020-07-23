@@ -8,11 +8,11 @@ import java.io.IOException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.mockito.*;
-import org.mockito.junit;
 import org.mockito.junit.MockitoRule;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.Mock;
@@ -22,7 +22,7 @@ public final class NameTest {
 
   private final DataServlet servlet = new DataServlet();
 
-  public MockitoRule mockito = MockitoJUnit.rule();
+  @Rule public MockitoRule mockito = MockitoJUnit.rule();
 
   @Mock private final HttpServletRequest request;
   @Mock private final HttpServletResponse response;
