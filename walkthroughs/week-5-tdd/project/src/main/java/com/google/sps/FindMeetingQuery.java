@@ -23,7 +23,8 @@ public final class FindMeetingQuery {
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
     Collection<String> attendees = request.getAttendees();
     long durationOfMeeting = request.getDuration();
-    List<TimeRange> freeTimeRanges = findFreeTimeRanges(events, attendees, durationOfMeeting);
+    List<Event> sortedEventsByStart = sortEventsByStart(events);
+    List<TimeRange> freeTimeRanges = findFreeTimeRanges(sortedEventsByStart, attendees, durationOfMeeting);
     return freeTimeRanges;
   }
 
@@ -32,9 +33,10 @@ public final class FindMeetingQuery {
     return timeRanges;
   }
 
-  private static List<Event> sortEventsByStart(List<Event> events) {
-    Collections.sort(events, Event.ORDER_BY_START);
-    return events;
+  private static List<Event> sortEventsByStart(Collection<Event> events) {
+    List<Event> eventsToList = new ArrayList<>(events);
+    Collections.sort(eventstoList, Event.ORDER_BY_START);
+    return eventsToList;
   }
 
   private static List<TimeRange> findSortedBusyTimeRanges(
