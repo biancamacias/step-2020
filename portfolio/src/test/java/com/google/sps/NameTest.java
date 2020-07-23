@@ -1,5 +1,8 @@
 package com.google.sps.servlets;
 
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -20,21 +23,15 @@ import org.junit.runners.JUnit4;
 import org.mockito.Mockito;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 @RunWith(JUnit4.class)
 public final class NameTest extends Mockito {
   private final DataServlet servlet = new DataServlet();
 
-  @Mock
-  private final HttpServletRequest request;
-  @Mock
-  private final HttpServletResponse response;
-  @Mock
-  private final ServletConfig servletConfig;
-  @Mock
-  private final ServletOutputStream outputStream;
+  @Mock private final HttpServletRequest request;
+  @Mock private final HttpServletResponse response;
+  @Mock private final ServletConfig servletConfig;
+  @Mock private final ServletOutputStream outputStream;
 
   @Before
   public void setUp() {
