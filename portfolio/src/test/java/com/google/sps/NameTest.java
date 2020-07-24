@@ -8,7 +8,6 @@ import static org.mockito.Mockito.when;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.IOException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.junit.Rule;
@@ -29,7 +28,6 @@ public class NameTest {
 
   @Mock private HttpServletRequest request;
   @Mock private HttpServletResponse response;
-  @Mock private ServletOutputStream outputStream;
 
   @Test
   public void getMyName() throws IOException {
