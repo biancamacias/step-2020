@@ -18,15 +18,15 @@ import org.mockito.junit.MockitoJUnit;
 import org.mockito.Mock;
 
 @RunWith(JUnit4.class)
-public final class NameTest {
+public class NameTest {
 
   private final DataServlet servlet = new DataServlet();
 
   @Rule public MockitoRule mockito = MockitoJUnit.rule();
 
-  @Mock private final HttpServletRequest request;
-  @Mock private final HttpServletResponse response;
-  @Mock private final ServletOutputStream outputStream;
+  @Mock private HttpServletRequest request;
+  @Mock private HttpServletResponse response;
+  @Mock private ServletOutputStream outputStream;
 
   @Test
   public void getMyName() throws IOException {
