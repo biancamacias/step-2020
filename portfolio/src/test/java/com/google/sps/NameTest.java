@@ -1,9 +1,12 @@
 package com.google.sps.servlets;
 
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.io.IOException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -30,10 +33,12 @@ public class NameTest {
 
   @Test
   public void getMyName() throws IOException {
-    when(response.getOutputStream()).thenReturn(outputStream);
+    StringWriter stringWriter = new StringWriter();
+    PrintWriter printWriter = new PrintWriter(stringWriter);
+    when(response.getWriter()).thenReturn(printWriter);
     servlet.doGet(request, response);
 
-    verify(response).setContentType("plain/text");
-    verify(outputStream).println("Hello Bianca!");
+    verify(response).setContentType("text/plain;");
+    assertTrue(stringWriter.toString().contains("Hello Bianca!"));
   }
 }
