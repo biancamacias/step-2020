@@ -18,7 +18,7 @@ import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
 @RunWith(JUnit4.class)
-public class NameTest {
+public final class NameTest {
 
   private final DataServlet servlet = new DataServlet();
 
