@@ -22,7 +22,7 @@ public final class NameTest {
 
   private final DataServlet servlet = new DataServlet();
 
-  @Rule public MockitoRule mockito = MockitoJUnit.rule();
+  @Rule public final MockitoRule mockito = MockitoJUnit.rule();
 
   @Mock private HttpServletRequest request;
   @Mock private HttpServletResponse response;
