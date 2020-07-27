@@ -1,5 +1,6 @@
 package com.google.sps.servlets;
 
+import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -35,6 +36,6 @@ public final class NameTest {
     servlet.doGet(request, response);
 
     verify(response).setContentType("text/plain;");
-    assertTrue(stringWriter.toString().contains("Hello Bianca!"));
+    assertThat(stringWriter.toString().equals("Hello Bianca!"));
   }
 }
