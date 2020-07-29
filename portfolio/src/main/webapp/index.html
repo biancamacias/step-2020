@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/style.css">
     <script src="/script.js"></script>
   </head>
-  <body>
+  <body onload="fetchComments()">
     <div id="title">
       <h1>a page about me</h1>
       <p>this is my portfolio, a little more about B</p>
@@ -26,11 +26,6 @@
                 <div id="quote-displayer">
                 </div>
                 <button id="quote-button" onclick="divMessage()">daily quote generator!</button>
-                <br>
-                <button id="name-button" onclick="fetchComments()">it's a surprise</button>
-                <div id="comment-container">
-                    <ul id="comment-list"></ul>
-                </div>
             </div>
             <br>
 
@@ -94,6 +89,28 @@
                     a lot of people, but growing up, I used to be a competitive dancer and actually learned to do my own hair 
                     and makeup before I was ten years old. Since then, my skills have only gotten better, and I've actually been 
                     paid every so often as a freelance artist for proms, dances, recitals, and weddings.</p>
+            </div>
+            <br>
+
+            <div id="comment-container">
+                <ul id="comment-list"></ul>
+            </div>
+            <br>
+
+            <div>
+                <form action="/data" method="POST">
+                    <p>enter comments below, tell us your thoughts!</p>
+                    <textarea name="comment-input"></textarea>
+                    <br>
+                    <input type="submit"/>
+                </form>
+            </div>
+            <br>
+
+            <div>
+                <form action="/delete-data" method="POST">
+                    <input type="submit" value="delete comments here">
+                </form>
             </div>
         </div>
 

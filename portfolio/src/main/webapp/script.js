@@ -62,13 +62,13 @@ function fetchComments() {
         commentListElement.innerHTML = '';
         for (const tempComment of comments) {
             commentListElement.appendChild(
-                createListElement(tempComment));
+            createCommentElement(tempComment));
         }
     });
 }
 
-function createListElement(text) {
-    const liElement = document.createElement('li');
-    liElement.innerText = text;
-    return liElement;
+function createCommentElement(comment) {
+    const commentElement = document.createElement('li');
+    commentElement.innerText = comment;
+    return commentElement;
 }
