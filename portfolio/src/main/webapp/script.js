@@ -49,9 +49,28 @@ function handleNameResponse(nameResponse) {
 }
 
 function addName(name) {
-  console.log('Adding name to DOM...');
-  const nameDiv = document.getElementById('name-container');
-  nameDiv.innerText = name;
+    console.log('Adding name to DOM...');
+    const nameDiv = document.getElementById('name-container');
+    nameDiv.innerText = name;
+}
+
+function fetchComments() {
+    fetch('/data').then(response => response.json()).then((comments) => {
+        console.log('Fetching comments...');
+        console.log(comments);
+        const commentListElement = document.getElementById('comment-list');
+        commentListElement.innerHTML = '';
+        for (const tempComment of comments) {
+            commentListElement.appendChild(
+            createCommentElement(tempComment));
+        }
+    });
+}
+
+function createCommentElement(comment) {
+    const commentElement = document.createElement('li');
+    commentElement.innerText = comment;
+    return commentElement;
 }
 
 function createMap() {
@@ -76,4 +95,9 @@ function createMap() {
     map: map,
     title: 'East Los Angeles'
   });
+}
+
+function onloadFunction() {
+  fetchComments();
+  createMap();
 }
