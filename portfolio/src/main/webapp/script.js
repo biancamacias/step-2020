@@ -19,33 +19,33 @@
 
 function pickRandomQuote() {
   const quotes =
-      ['The secret of getting ahead is getting started.', 'What you do today can improve all your tomorrows',
-       'A single sunbeam is enough to drive away many shadows',
-       'It is never too late to be what you might have been.', 
-       'A true friend never gets in your way unless you happen to be going down.'];
+    ['The secret of getting ahead is getting started.', 'What you do today can improve all your tomorrows',
+    'A single sunbeam is enough to drive away many shadows',
+    'It is never too late to be what you might have been.', 
+    'A true friend never gets in your way unless you happen to be going down.'];
 
   // Pick a random quote.
-    const quote = quotes[Math.floor(Math.random() * quotes.length)];
+  const quote = quotes[Math.floor(Math.random() * quotes.length)];
 
   // Return quote as string to be used elsewhere.
-    return quote;
+  return quote;
 }
 
 function divMessage() {
-    const quoteToDisplay = pickRandomQuote();
-    document.getElementById('quote-displayer').innerText = quoteToDisplay;
+  const quoteToDisplay = pickRandomQuote();
+  document.getElementById('quote-displayer').innerText = quoteToDisplay;
 }
 
 function fetchMyName() {
-    console.log('Fetching your name...');
-    const responsePromise = fetch('/data');
-    responsePromise.then(handleResponse);
+  console.log('Fetching your name...');
+  const responsePromise = fetch('/data');
+  responsePromise.then(handleResponse);
 }
 
 function handleNameResponse(nameResponse) {
-    console.log('Handling response...');
-    const namePromise = nameResponse.text();
-    namePromise.then(addName);
+  console.log('Handling response...');
+  const namePromise = nameResponse.text();
+  namePromise.then(addName);
 }
 
 function addName(name) {
@@ -71,4 +71,33 @@ function createCommentElement(comment) {
     const commentElement = document.createElement('li');
     commentElement.innerText = comment;
     return commentElement;
+}
+
+function createMap() {
+  const map = new google.maps.Map(
+    document.getElementById('map'),
+    {center: {lat: 34.052, lng: -118.245}, zoom: 10});
+
+  const favoriteRestaurantMarker = new google.maps.Marker({
+    position: {lat: 34.0831169, lng: -118.3410553},
+    map: map,
+    title: 'Italian Dream'
+  });
+
+  const favoriteOutdoorMarketMarker = new google.maps.Marker({
+    position: {lat: 34.0498131, lng: -118.2519937},
+    map: map,
+    title: 'Grand Central Market'
+  });
+
+  const familyRootsMarker = new google.maps.Marker({
+    position: {lat:34.0095081, lng: -118.2896097},
+    map: map,
+    title: 'East Los Angeles'
+  });
+}
+
+function onloadFunction() {
+  fetchComments();
+  createMap();
 }

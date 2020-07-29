@@ -22,6 +22,7 @@ public class Greeter {
    * Returns a greeting for the given name.
    */
   public String greet(String name) {
-    return "Hello " + name;
+    String fixedName = name.replaceAll("[^a-zA-Z0-9]\\s*", "");
+    return "Hello " + fixedName;
   }
 }
